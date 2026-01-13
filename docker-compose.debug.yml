@@ -15,11 +15,11 @@ services:
       - 8000:8000
       - 5678:5678
     environment:
-      - TZ=Europe/Warsaw
-      - DB_HOST=db
-      - DB_NAME=app
-      - DB_USER=postgres
-      - DB_PASSWORD=pass
+      - TZ=${TZ}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
     depends_on:
       - db
     networks:
@@ -29,10 +29,10 @@ services:
   db:
     image: postgres:17.0-alpine3.20
     environment:
-      - TZ=Europe/Warsaw
-      - POSTGRES_DB=app
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=pass
+      - TZ=${TZ}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
       - "5432:5432"
     networks:
